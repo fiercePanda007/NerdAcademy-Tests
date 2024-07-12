@@ -37,7 +37,7 @@ const SelectCountry = () => {
           Select your <Text style={{ color: "#4B9CD3" }}> Country</Text>{" "}
         </Text>
       </View>
-      <SearchComponent data={data} placeholder="Search your country here ..." next="SelectYearGroup" />
+      <SearchComponent data={data} placeholder="Search your country here ..." next="SelectYearGroup" multiSelect={false} />
     </SafeAreaView>
   );
 };

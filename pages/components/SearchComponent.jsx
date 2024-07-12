@@ -8,13 +8,13 @@ import {
   TouchableOpacity,
 } from "react-native";
 import EvilIcons from "@expo/vector-icons/EvilIcons";
-import { Fontisto } from "@expo/vector-icons";
 import { Link } from "expo-router";
+import { Feather } from "@expo/vector-icons";
 
-const SearchComponent = ({ data, placeholder, next }) => {
+const SearchComponent = ({ data, placeholder, next, multiSelect }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredData, setFilteredData] = useState(data);
-  const [selectedCountry, setSelectedCountry] = useState(null);
+  const [selectedData, setSelectedData] = useState([]);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -23,7 +23,7 @@ const SearchComponent = ({ data, placeholder, next }) => {
         const itemData = item.toUpperCase();
         const queryData = query.toUpperCase();
         return itemData.indexOf(queryData) > -1;
-      });1
+      });
       setFilteredData(newData);
     } else {
       setFilteredData(data);
@@ -31,58 +31,72 @@ const SearchComponent = ({ data, placeholder, next }) => {
   };
 
   const handleSelectCountry = (country) => {
-    setSelectedCountry(country);
-  };
-
-  const toggleCheckbox = (item) => {
-    if (selectedCountry === item) {
-      setSelectedCountry(null); // Deselect if already selected
+    if (multiSelect) {
+      if (selectedData.includes(country)) {
+        setSelectedData(
+          selectedData.filter((item) => item !== country)
+        );
+      } else {
+        setSelectedData([...selectedData, country]);
+      }
     } else {
-      setSelectedCountry(item); // Select the country
+      setSelectedData([country]);
     }
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.searchBox}>
-        <TextInput
-          style={styles.input}
-          placeholder={placeholder}
-          placeholderTextColor="#D1E5F4"
-          value={searchQuery}
-          onChangeText={handleSearch}
-        />
-        <EvilIcons name="search" size={24} color="#D1E5F4" />
-      </View>
-      <View style={styles.list}>
-        {filteredData.map((item, index) => (
-          <TouchableOpacity
-            key={index}
-            style={[
-              styles.itemContainer,
-              selectedCountry === item && styles.selectedItemContainer,
-            ]}
-            onPress={() => toggleCheckbox(item)}
-          >
-            <Text style={styles.itemText}>{item}</Text>
-            {selectedCountry === item && (
-              <Fontisto name="checkbox-active" size={24} color="white" />
-            )}
-          </TouchableOpacity>
-        ))}
-      </View>
-      {selectedCountry && (
-        <View style={styles.buttonContainer}>
-          <Link href={`pages/${next}`} style={styles.button}>
-            Continue
-          </Link>
+    <View style={styles.wrapper}>
+      <ScrollView style={styles.container}>
+        <View style={styles.searchBox}>
+          <TextInput
+            style={styles.input}
+            placeholder={placeholder}
+            placeholderTextColor="#D1E5F4"
+            value={searchQuery}
+            onChangeText={handleSearch}
+          />
+          <EvilIcons name="search" size={24} color="#D1E5F4" />
         </View>
-      )}
-    </ScrollView>
+        <View style={styles.list}>
+          {filteredData.map((item, index) => (
+            <TouchableOpacity
+              key={index}
+              style={[
+                styles.itemContainer,
+                selectedData.includes(item) &&
+                  styles.selectedItemContainer,
+              ]}
+              onPress={() => handleSelectCountry(item)}
+            >
+              <Text style={styles.itemText}>{item}</Text>
+              {selectedData.includes(item) && (
+                <Feather name="check-square" size={24} color="white" />
+              )}
+            </TouchableOpacity>
+          ))}
+        </View>
+      </ScrollView>
+      <View style={styles.buttonContainer}>
+        {selectedData.length > 0 && (
+          <TouchableOpacity style={styles.button}>
+            <Link href={{
+              pathname:`pages/${next}`,
+              params:{selectedData:JSON.stringify(selectedData)},
+            }} style={styles.linkText}>
+              Continue
+            </Link>
+          </TouchableOpacity>
+        )}
+      </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1,
+    position: "relative",
+  },
   container: {
     flex: 1,
     padding: 10,
@@ -124,15 +138,23 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   buttonContainer: {
-    marginTop: 20,
+    position: "absolute",
+    bottom: 0,
+    right: "2%",
     alignItems: "center",
   },
   button: {
-    padding: 10,
+    width: 80,
+    height: 30,
+    borderRadius: 10, 
     backgroundColor: "#4B9CD3",
-    borderRadius: 5,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  linkText: {
     color: "white",
     textAlign: "center",
+    fontSize:20
   },
 });
 

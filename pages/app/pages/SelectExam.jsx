@@ -38,8 +38,12 @@ const SelectExam = () => {
           >
             Select your <Text style={{ color: "#4B9CD3" }}> Exam</Text>{" "}
           </Text>
+          <Text style={{
+            color: "white",
+            fontSize: 20,
+          }}>You can select one or more </Text>
         </View>
-        <SearchComponent data={data} placeholder="Search your Exam here..." next="SelectSubject" />
+        <SearchComponent data={data} placeholder="Search your Exam here..." next="SelectSubject" multiSelect={true} />
       </SafeAreaView>
     </View>
   );

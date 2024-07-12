@@ -36,8 +36,21 @@ const SelectSubject = () => {
           >
             Select your <Text style={{ color: "#4B9CD3" }}> Subjects</Text>{" "}
           </Text>
+          <Text
+            style={{
+              color: "white",
+              fontSize: 20,
+            }}
+          >
+            You can select one or more{" "}
+          </Text>
         </View>
-        <SearchComponent data={data} placeholder="Search your Subject here..." next="PlanSelectionScreen" />
+        <SearchComponent
+          data={data}
+          placeholder="Search your Subject here..."
+          next="PlanSelectionScreen"
+          multiSelect={true}
+        />
       </SafeAreaView>
     </View>
   );
