@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import React from "react";
 import Header from "./../../components/Header";
 import SearchComponent from "./../../components/SearchComponent";
+import { useLocalSearchParams } from "expo-router";
 
 const data = [
   "Grade 6",
@@ -14,6 +15,8 @@ const data = [
 
 ];
 const SelectYearGroup = () => {
+  selectedData=useLocalSearchParams();
+  console.log(selectedData)
   return (
     <View style={styles.try}>
       <Header />

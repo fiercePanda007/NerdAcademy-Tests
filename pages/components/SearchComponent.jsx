@@ -81,7 +81,8 @@ const SearchComponent = ({ data, placeholder, next, multiSelect }) => {
           <TouchableOpacity style={styles.button}>
             <Link href={{
               pathname:`pages/${next}`,
-              params:{selectedData:JSON.stringify(selectedData)},
+              params:selectedData,
+              // params:{selectedData:JSON.stringify(selectedData)},
             }} style={styles.linkText}>
               Continue
             </Link>
@@ -140,6 +141,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     position: "absolute",
     bottom: 0,
+    padding: 0,
     right: "2%",
     alignItems: "center",
   },

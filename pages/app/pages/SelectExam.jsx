@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import React from "react";
 import Header from "./../../components/Header";
 import SearchComponent from "./../../components/SearchComponent";
-
+import { useLocalSearchParams } from "expo-router";
 const data = [
   "A Level",
   "AP",
@@ -16,6 +16,9 @@ const data = [
   "Int AS",
 ];
 const SelectExam = () => {
+  selectedData = useLocalSearchParams();
+  console.log(selectedData);
+
   return (
     <View style={styles.try}>
       <Header />
@@ -38,12 +41,21 @@ const SelectExam = () => {
           >
             Select your <Text style={{ color: "#4B9CD3" }}> Exam</Text>{" "}
           </Text>
-          <Text style={{
-            color: "white",
-            fontSize: 20,
-          }}>You can select one or more </Text>
+          <Text
+            style={{
+              color: "white",
+              fontSize: 20,
+            }}
+          >
+            You can select one or more{" "}
+          </Text>
         </View>
-        <SearchComponent data={data} placeholder="Search your Exam here..." next="SelectSubject" multiSelect={true} />
+        <SearchComponent
+          data={data}
+          placeholder="Search your Exam here..."
+          next="SelectSubject"
+          multiSelect={true}
+        />
       </SafeAreaView>
     </View>
   );
