@@ -34,7 +34,7 @@ const SelectCountry = () => {
             fontWeight: "bold",
           }}
         >
-          Select your <Text style={{ color: "#4B9CD3" }}> Country</Text>{" "}
+          Select your <Text style={{ color: "#263eff" }}> Country</Text>{" "}
         </Text>
       </View>
       <SearchComponent

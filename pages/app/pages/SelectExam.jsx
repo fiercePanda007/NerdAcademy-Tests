@@ -39,7 +39,7 @@ const SelectExam = () => {
               fontWeight: "bold",
             }}
           >
-            Select your <Text style={{ color: "#4B9CD3" }}> Exam</Text>{" "}
+            Select your <Text style={{ color: "#263eff" }}> Exam</Text>{" "}
           </Text>
           <Text
             style={{

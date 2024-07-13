@@ -131,7 +131,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   selectedItemContainer: {
-    backgroundColor: "#4B9CD3", // Highlight color for selected item
+    backgroundColor: "#263eff",
+    borderRadius: 20,
   },
   itemText: {
     fontSize: 26,
@@ -148,15 +149,15 @@ const styles = StyleSheet.create({
   button: {
     width: 80,
     height: 30,
-    borderRadius: 10, 
-    backgroundColor: "#4B9CD3",
+    borderRadius: 20,
+    backgroundColor: "#263eff",
     justifyContent: "center",
     alignItems: "center",
   },
   linkText: {
     color: "white",
     textAlign: "center",
-    fontSize:20
+    fontSize: 20,
   },
 });
 

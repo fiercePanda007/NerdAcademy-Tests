@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+
 import {
   View,
   Text,
@@ -11,11 +12,10 @@ import Header from "./../../components/Header";
 import SearchComponent from "./../../components/SearchComponent";
 import { useLocalSearchParams } from "expo-router";
 
-
 const SelectSubject = () => {
   const selectedData = useLocalSearchParams();
-  const options =Object.values(selectedData);
-  const [selectedLabel, setSelectedLabel] = useState((options[0]));
+  const options = Object.values(selectedData);
+  const [selectedLabel, setSelectedLabel] = useState(options[0]);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const animation = useRef(new Animated.Value(0)).current;
 
@@ -35,7 +35,7 @@ const SelectSubject = () => {
 
   const dropdownTranslateY = animation.interpolate({
     inputRange: [0, 1],
-    outputRange: [-50, 0], 
+    outputRange: [-50, 0],
     extrapolate: "clamp",
   });
 
@@ -58,7 +58,9 @@ const SelectSubject = () => {
           <Text style={styles.headerText}>
             Select your subject for{" "}
             <TouchableOpacity onPress={toggleDropdown}>
-              <Text style={{ color: "#4B9CD3" }}>{selectedLabel}</Text>
+              <Text style={{ color: "#263eff", fontSize: 23 }}>
+                {selectedLabel}
+              </Text>
             </TouchableOpacity>
           </Text>
           {dropdownVisible && (

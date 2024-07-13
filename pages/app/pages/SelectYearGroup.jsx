@@ -37,10 +37,15 @@ const SelectYearGroup = () => {
               fontWeight: "bold",
             }}
           >
-            Select the <Text style={{ color: "#4B9CD3" }}> Year Group</Text>{" "}
+            Select the <Text style={{ color: "#263eff" }}> Year Group</Text>{" "}
           </Text>
         </View>
-        <SearchComponent data={data} placeholder="Search your year group here..." next="SelectExam" multiSelect={false} />
+        <SearchComponent
+          data={data}
+          placeholder="Search your year group here..."
+          next="SelectExam"
+          multiSelect={false}
+        />
       </SafeAreaView>
     </View>
   );
