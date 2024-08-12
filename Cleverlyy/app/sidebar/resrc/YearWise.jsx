@@ -4,7 +4,7 @@ import React from "react";
 const yearWise = () => {
   return (
     <View>
-      <Text>yearWise</Text>
+      <Text>yearWise: this page goes to subject/pastPaper</Text>
     </View>
   );
 };

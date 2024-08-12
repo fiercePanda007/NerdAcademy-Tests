@@ -14,6 +14,13 @@ export default function RootLayout() {
       <Stack.Screen name="sidebar/subjects/topicQuestions/PhysicsEd.jsx" />
       <Stack.Screen name="sidebar/subjects/revisionNotes/physicsEd.jsx" />
       <Stack.Screen name="sidebar/subjects/pastPapers/physicsEd.jsx" />
+      <Stack.Screen name="sidebar/subjects/resrc/YearWise.jsx" />
+      <Stack.Screen name="sidebar/subjects/resrc/chapterWise.jsx" />
+      <Stack.Screen name="sidebar/subjects/resrc/RevisionNotes.jsx" />
+      <Stack.Screen name="sidebar/aiCheck/AiCheck.jsx" />
+      <Stack.Screen name="sidebar/dashboard/RootDash.jsx" />
+      <Stack.Screen name="sidebar/forum/rootForum.jsx" />
+      <Stack.Screen name="sidebar/tipshints/rootTips.jsx" />
     </Stack>
   );
 }

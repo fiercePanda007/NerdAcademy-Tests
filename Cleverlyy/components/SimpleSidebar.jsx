@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';  // Ensure this package is installed
-
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';  
 const SimpleSidebar = () => {
   const [isResourcesOpen, setResourcesOpen] = useState(false);
 
@@ -29,7 +28,7 @@ const SimpleSidebar = () => {
       <ScrollView style={styles.scrollView}>
         {menuItems.map(item => {
           if (item.submenu && !isResourcesOpen) {
-            return null; // Hide submenu items unless resources are open
+            return null; 
           }
 
           const itemStyle = item.submenu ? styles.submenuItem : styles.menuItem;
@@ -50,6 +49,7 @@ const SimpleSidebar = () => {
   );
 };
 
+
 const styles = StyleSheet.create({
   sidebar: {
     backgroundColor: '#121212',
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
-    marginLeft: 20,  // Indent submenu items
+    marginLeft: 20,
   },
   text: {
     color: 'white',

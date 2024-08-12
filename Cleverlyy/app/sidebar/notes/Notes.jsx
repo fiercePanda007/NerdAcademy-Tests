@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const rootTips = () => {
+const Notes = () => {
   return (
     <View>
-      <Text>rootTips: this page goes no where</Text>
+      <Text>Notes: This page goes no where</Text>
     </View>
   );
 };
 
-export default rootTips;
+export default Notes;

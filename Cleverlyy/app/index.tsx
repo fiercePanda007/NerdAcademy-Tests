@@ -12,7 +12,7 @@ const Index = () => {
       }}
     >
       <Link
-        href="/pages/SelectCountry"
+        href="/login/SelectCountry"
         style={{
           alignItems: "center",
           justifyContent: "center",

@@ -4,7 +4,7 @@ import React from "react";
 const RevisonNotes = () => {
   return (
     <View>
-      <Text>RevisonNotes</Text>
+      <Text>RevisonNotes: this page goesto subjects/revisionNotes</Text>
     </View>
   );
 };

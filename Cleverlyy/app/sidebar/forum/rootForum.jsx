@@ -4,7 +4,7 @@ import React from "react";
 const rootForum = () => {
   return (
     <View>
-      <Text>Discourse API</Text>
+      <Text>Goes to Discourse API</Text>
     </View>
   );
 };

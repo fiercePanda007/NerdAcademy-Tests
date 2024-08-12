@@ -176,7 +176,7 @@ const SearchComponent = ({ data, placeholder, next, multiSelect, modal }) => {
           <TouchableOpacity style={styles.button}>
             <Link
               href={{
-                pathname: `pages/${next}`,
+                pathname: `login/${next}`,
                 params: selectedData,
                 // params:{selectedData:JSON.stringify(selectedData)},
               }}
