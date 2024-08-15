@@ -3,7 +3,13 @@ import React from "react";
 
 const Notes = () => {
   return (
-    <View>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Text>Notes: This page goes no where</Text>
     </View>
   );

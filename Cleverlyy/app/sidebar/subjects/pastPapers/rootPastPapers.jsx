@@ -1,10 +1,17 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
-
+import { Link } from "expo-router";
 const rootPastPapers = () => {
   return (
-    <View>
-      <Text>rootPastPapers</Text>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Text>Past Paper</Text>
+      <Text>Opens a PDF editor to solve and check</Text>
     </View>
   );
 };

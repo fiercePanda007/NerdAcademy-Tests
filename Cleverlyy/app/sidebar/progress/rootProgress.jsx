@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const rootTips = () => {
+const rootProgress = () => {
   return (
     <View
       style={{
@@ -10,9 +10,9 @@ const rootTips = () => {
         alignItems: "center",
       }}
     >
-      <Text>rootTips: this page goes no where</Text>
+      <Text>rootProgress</Text>
     </View>
   );
 };
 
-export default rootTips;
+export default rootProgress;

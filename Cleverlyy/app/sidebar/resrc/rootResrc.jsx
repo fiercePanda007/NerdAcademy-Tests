@@ -1,7 +1,8 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { Link } from "expo-router";
-const PhysicsEd = () => {
+
+const rootResrc = () => {
   return (
     <View
       style={{
@@ -10,36 +11,37 @@ const PhysicsEd = () => {
         alignItems: "center",
       }}
     >
-      <Text>physicsEd</Text>
+      <Text>Root Resrc</Text>
       <TouchableOpacity>
         <Link
           href={{
-            pathname: "sidebar/subjects/revisionNotes/physicsEd",
+            pathname: "sidebar/resrc/subResrc/YearWise",
+          }}
+        >
+          <Text>Year Wise</Text>
+        </Link>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Link
+          href={{
+            pathname: "sidebar/resrc/subResrc/ChapterWise",
+          }}
+        >
+          <Text>Chapter Wise</Text>
+        </Link>
+      </TouchableOpacity>
+
+      <TouchableOpacity>
+        <Link
+          href={{
+            pathname: "sidebar/resrc/subResrc/RevisionNotes",
           }}
         >
           <Text>Revision Notes</Text>
-        </Link>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Link
-          href={{
-            pathname: "sidebar/subjects/topicQuestions/PhysicsEd",
-          }}
-        >
-          <Text>Topic Question</Text>
-        </Link>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Link
-          href={{
-            pathname: "sidebar/subjects/pastPapers/rootPastPapers",
-          }}
-        >
-          <Text>Past Papers</Text>
         </Link>
       </TouchableOpacity>
     </View>
   );
 };
 
-export default PhysicsEd;
+export default rootResrc;

@@ -1,7 +1,8 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { Link } from "expo-router";
-const PhysicsEd = () => {
+
+const YearWise = () => {
   return (
     <View
       style={{
@@ -10,20 +11,18 @@ const PhysicsEd = () => {
         alignItems: "center",
       }}
     >
-      <Text>PhysicsEd Topic question:Opens a PDF editor</Text>
-      <Text>Student can select chapters and topics here</Text>
+      <Text>yearWise: this page goes to subject/pastPaper</Text>
       <TouchableOpacity>
         <Link
-          replace
           href={{
-            pathname: "sidebar/subjects/enrolledSubjects/PhysicsEd",
+            pathname: "sidebar/subjects/pastPapers/rootPastPapers",
           }}
         >
-          <Text>Submit</Text>
+          Select a Year
         </Link>
       </TouchableOpacity>
     </View>
   );
 };
 
-export default PhysicsEd;
+export default YearWise;

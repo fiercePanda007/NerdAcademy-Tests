@@ -9,18 +9,23 @@ export default function RootLayout() {
       <Stack.Screen name="login/SelectSubject" />
       <Stack.Screen name="login/SelectYearGroup" />
       <Stack.Screen name="login/PlanSelectionScreen" />
-      <Stack.Screen name="sidebar/subjects/RootSubjects.jsx" />
-      <Stack.Screen name="sidebar/subjects/enrolledSubjects/PhysicsEd.jsx" />
-      <Stack.Screen name="sidebar/subjects/topicQuestions/PhysicsEd.jsx" />
-      <Stack.Screen name="sidebar/subjects/revisionNotes/physicsEd.jsx" />
-      <Stack.Screen name="sidebar/subjects/pastPapers/physicsEd.jsx" />
-      <Stack.Screen name="sidebar/subjects/resrc/YearWise.jsx" />
-      <Stack.Screen name="sidebar/subjects/resrc/chapterWise.jsx" />
-      <Stack.Screen name="sidebar/subjects/resrc/RevisionNotes.jsx" />
-      <Stack.Screen name="sidebar/aiCheck/AiCheck.jsx" />
-      <Stack.Screen name="sidebar/dashboard/RootDash.jsx" />
-      <Stack.Screen name="sidebar/forum/rootForum.jsx" />
-      <Stack.Screen name="sidebar/tipshints/rootTips.jsx" />
+      <Stack.Screen name="sidebar/dashboard/RootDash" />
+      <Stack.Screen name="sidebar/subjects/RootSubjects" />
+      <Stack.Screen name="sidebar/subjects/enrolledSubjects/PhysicsEd" />
+      <Stack.Screen name="sidebar/subjects/topicQuestions/PhysicsEd" />
+      <Stack.Screen name="sidebar/subjects/revisionNotes/physicsEd" />
+      <Stack.Screen name="sidebar/subjects/revisionNotes/topicWiseRevision/physicsEd" />
+      <Stack.Screen name="sidebar/subjects/pastPapers/rootPastPapers" />
+      <Stack.Screen name="sidebar/resrc/rootResrc" />
+      <Stack.Screen name="sidebar/resrc/subResrc/YearWise" />
+      <Stack.Screen name="sidebar/resrc/subResrc/ChapterWise" />
+      <Stack.Screen name="sidebar/resrc/subResrc/RevisionNotes" />
+      <Stack.Screen name="sidebar/progress/rootProgress" />
+      <Stack.Screen name="sidebar/notes/rootNotes" />
+      <Stack.Screen name="sidebar/aiCheck/rootAiCheck" />
+      <Stack.Screen name="sidebar/calenders/rootCalenders" />
+      <Stack.Screen name="sidebar/forum/rootForum" />
+      <Stack.Screen name="sidebar/tipshints/rootTips" />
     </Stack>
   );
 }

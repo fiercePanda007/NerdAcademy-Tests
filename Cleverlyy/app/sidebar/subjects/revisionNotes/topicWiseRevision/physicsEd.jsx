@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const AiCheck = () => {
+const physicsEd = () => {
   return (
     <View>
-      <Text>AiCheck: this page goes no where</Text>
+      <Text>physicsEd Topics: this button opens PDF</Text>
     </View>
   );
 };
 
-export default AiCheck;
+export default physicsEd;

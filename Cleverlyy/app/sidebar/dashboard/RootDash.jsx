@@ -1,29 +1,202 @@
-import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Dimensions,
+} from "react-native";
 
-const RootDash = () => {
+const { width, height } = Dimensions.get("window");
+
+const HomeScreen = () => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <TouchableOpacity>
-        <Text>WatchVideo</Text>
+    <ScrollView style={styles.container}>
+      <View style={styles.topSection}>
+        <View style={styles.videoContainer}>
+          <TouchableOpacity style={styles.playButton}>
+            <Text>Play</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.activityLog}>
+          <Text style={styles.activityLogTitle}>Activity Log</Text>
+          <View style={styles.activityItem}>
+            <Text style={styles.activityText}>Watch video - Chapter 1</Text>
+            <Text style={styles.activityDate}>1st November, 2023</Text>
+          </View>
+        </View>
+      </View>
+
+      <View style={styles.middleSection}>
+        <View style={styles.infoBox}>
+          <Text style={styles.infoText}>EXAM DATES</Text>
+        </View>
+        <View style={styles.infoBox}>
+          <Text style={styles.infoText}>PROGRESS</Text>
+        </View>
+        <View style={styles.infoBox}>
+          <Text style={styles.infoText}>SUGGESTIONS</Text>
+        </View>
+      </View>
+
+      <View style={styles.bottomSection}>
+        <View style={styles.actionBox}>
+          <TouchableOpacity style={styles.actionButton}>
+            <Text>Tips</Text>
+          </TouchableOpacity>
+          <Text style={styles.actionText}>Watch Videos</Text>
+        </View>
+        <View style={styles.actionBox}>
+          <TouchableOpacity style={styles.actionButton}>
+            <Text>Notes</Text>
+          </TouchableOpacity>
+          <Text style={styles.actionText}>Take Notes</Text>
+        </View>
+        <View style={styles.actionBox}>
+          <TouchableOpacity style={styles.actionButton}>
+            <Text>Papers</Text>
+          </TouchableOpacity>
+          <Text style={styles.actionText}>Solve Papers</Text>
+        </View>
+      </View>
+
+      <TouchableOpacity style={styles.startJourneyButton}>
+        <Text style={styles.startJourneyText}>Start your journey</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
-        <Text>SolvePapers</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text>ViewNotes</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text>MarkingSchemas</Text>
-      </TouchableOpacity>
-    </View>
+
+      <View style={styles.footer}>
+        <TouchableOpacity style={styles.footerButton}>
+          <Text style={styles.footerButtonText}>Join Community</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.footerButton}>
+          <Text style={styles.footerButtonText}>Submit Problems</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.footerText}>Missing something? Tell us</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 
-export default RootDash;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: "#181818",
+  },
+  topSection: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 20,
+  },
+  videoContainer: {
+    width: "65%",
+    height: 200,
+    backgroundColor: "#333",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+  },
+  playButton: {
+    width: 50,
+    height: 50,
+    backgroundColor: "#555",
+    borderRadius: 25,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  activityLog: {
+    width: "30%",
+    backgroundColor: "#252525",
+    padding: 10,
+    borderRadius: 10,
+  },
+  activityLogTitle: {
+    color: "#FFF",
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  activityItem: {
+    marginBottom: 10,
+  },
+  activityText: {
+    color: "#CCC",
+  },
+  activityDate: {
+    color: "#777",
+    fontSize: 12,
+  },
+  middleSection: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 20,
+  },
+  infoBox: {
+    width: "30%",
+    height: 100,
+    backgroundColor: "#333",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+  },
+  infoText: {
+    color: "#FFF",
+    fontSize: 14,
+  },
+  bottomSection: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 20,
+  },
+  actionBox: {
+    width: "30%",
+    alignItems: "center",
+  },
+  actionButton: {
+    width: 60,
+    height: 60,
+    backgroundColor: "#444",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 30,
+    marginBottom: 10,
+  },
+  actionText: {
+    color: "#FFF",
+    fontSize: 14,
+  },
+  startJourneyButton: {
+    backgroundColor: "#444",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  startJourneyText: {
+    color: "#FFF",
+    fontSize: 16,
+  },
+  footer: {
+    alignItems: "center",
+  },
+  footerButton: {
+    backgroundColor: "#444",
+    padding: 10,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  footerButtonText: {
+    color: "#FFF",
+  },
+  footerText: {
+    color: "#777",
+    textDecorationLine: "underline",
+  },
+});
+
+export default HomeScreen;
