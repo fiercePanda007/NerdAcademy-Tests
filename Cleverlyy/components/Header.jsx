@@ -1,57 +1,62 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+  SafeAreaView,
+} from "react-native";
+import { Link } from "expo-router";
 
-
-const header = () => {
+import React from "react";
+import AntDesign from "@expo/vector-icons/AntDesign";
+const Header = (settingsLink) => {
+  console.log(settingsLink);
+  const { height: winHeight, width: winWidth } = Dimensions.get("window");
+  if (winWidth > winHeight) {
+    sidebarHeight = 80;
+    toppadding = 5;
+  } else {
+    sidebarHeight = 120;
+    toppadding = 50;
+  }
+  console.log(winHeight + " " + winWidth);
   return (
-    <View style={styles.headerMain}>
-      <SafeAreaView>
-        <FontAwesome
-          name="user-circle"
-          size={40}
-          color="white"
-          style={{
-            position: "relative",
-            left: "83%",
-            top: 15,
-          }}
-        />
-        <Text
-          style={{
-            color: "white",
-            fontSize: 22,
-            fontWeight: "bold",
-            position: "absolute",
-            left: "95%",
-            top: 11,
-          }}
-        >
-          Username
-        </Text>
-        <Text
-          style={{
-            color: "white",
-            fontSize: 22,
-            position: "absolute",
-            left: "95%",
-            top: 35,
-          }}
-        >
-          Tutor
-        </Text>
-      </SafeAreaView>
+    <View
+      style={{
+        width: winWidth,
+        height: sidebarHeight,
+        backgroundColor: "black",
+      }}
+    >
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "row",
+          justifyContent: "flex-end",
+          marginRight: 20,
+          paddingTop: toppadding,
+        }}
+      >
+        <TouchableOpacity>
+          <Link
+            href={settingsLink.link}
+            style={{ flex: 1, flexDirection: "row" }}
+          >
+            <View>
+              <Text>
+                <AntDesign name="user" size={60} color="white" />
+              </Text>
+            </View>
+            <View style={{ marginLeft: 10 }}>
+              <Text style={{ fontSize: 30, color: "white" }}>Username</Text>
+              <Text style={{ fontSize: 25, color: "white" }}>Tutor</Text>
+            </View>
+          </Link>
+        </TouchableOpacity>
+      </View>
     </View>
   );
-}
-const styles = StyleSheet.create({
-  headerMain: {
-    backgroundColor: "#111111",
-    height: 70,
-    borderRadius: 15,
-  },
-});
+};
 
-export default header
-
+export default Header;

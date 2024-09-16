@@ -11,15 +11,14 @@ const data = [
   "Grade 9",
   "Grade 10",
   "Grade 11",
-  "Grade 12"
-
+  "Grade 12",
 ];
 const SelectYearGroup = () => {
-  selectedData=useLocalSearchParams();
-  console.log(selectedData)
+  selectedData = useLocalSearchParams();
+  console.log(selectedData);
   return (
     <View style={styles.try}>
-      <Header />
+      <Header link="./../settings/RootSettings" />
       <SafeAreaView style={styles.container}>
         <View
           style={{

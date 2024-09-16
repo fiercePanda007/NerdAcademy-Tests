@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const PhysicsEd = () => {
+const AchievementUpdate = () => {
   return (
     <View>
-      <Text>PhysicsEd</Text>
+      <Text>AchievementUpdate</Text>
     </View>
   );
 };
 
-export default PhysicsEd;
+export default AchievementUpdate;

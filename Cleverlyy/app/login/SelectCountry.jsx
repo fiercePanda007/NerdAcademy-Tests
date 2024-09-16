@@ -1,6 +1,5 @@
 import { View, SafeAreaView, StyleSheet, Text } from "react-native";
 import React from "react";
-import Header from "../../components/Header";
 import SearchComponent from "../../components/SearchComponent";
 
 const data = [

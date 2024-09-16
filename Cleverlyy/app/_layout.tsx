@@ -26,6 +26,7 @@ export default function RootLayout() {
       <Stack.Screen name="sidebar/calenders/rootCalenders" />
       <Stack.Screen name="sidebar/forum/rootForum" />
       <Stack.Screen name="sidebar/tipshints/rootTips" />
+      <Stack.Screen name="settings" />
     </Stack>
   );
 }

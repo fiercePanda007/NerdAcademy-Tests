@@ -52,7 +52,7 @@ const SelectSubject = () => {
 
   return (
     <View style={styles.container}>
-      <Header />
+      <Header link="./../settings/RootSettings" />
       <SafeAreaView style={styles.content}>
         <View style={styles.header}>
           <Text style={styles.headerText}>
@@ -126,8 +126,8 @@ const styles = StyleSheet.create({
     elevation: 2,
     width: 150,
     position: "absolute",
-    top: 40, 
-    zIndex: 1, 
+    top: 40,
+    zIndex: 1,
   },
   option: {
     padding: 10,

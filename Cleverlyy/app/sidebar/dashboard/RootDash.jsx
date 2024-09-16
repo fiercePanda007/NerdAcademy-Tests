@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import Header from "./../../../components/Header";
+
 import {
   View,
   Text,
@@ -7,85 +9,100 @@ import {
   ScrollView,
   StyleSheet,
   Dimensions,
+  SafeAreaView,
+  Button,
 } from "react-native";
+
+import { Link } from "expo-router";
+import Sidebar from "./../../../components/SimpleSidebar";
 
 const { width, height } = Dimensions.get("window");
 
 const HomeScreen = () => {
-  return (
-    <ScrollView style={styles.container}>
-      <View style={styles.topSection}>
-        <View style={styles.videoContainer}>
-          <TouchableOpacity style={styles.playButton}>
-            <Text>Play</Text>
-          </TouchableOpacity>
-        </View>
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
 
-        <View style={styles.activityLog}>
-          <Text style={styles.activityLogTitle}>Activity Log</Text>
-          <View style={styles.activityItem}>
-            <Text style={styles.activityText}>Watch video - Chapter 1</Text>
-            <Text style={styles.activityDate}>1st November, 2023</Text>
+  const toggleSidebar = () => {
+    setIsSidebarVisible(!isSidebarVisible);
+  };
+  return (
+    <View style={styles.container}>
+      <Header link="./../../settings/RootSettings" />
+
+      <Sidebar isVisible={isSidebarVisible} toggleSidebar={toggleSidebar} />
+
+      <ScrollView style={{ paddingLeft: 40, paddingRight: 30, paddingTop: 5 }}>
+        <View style={styles.topSection}>
+          <View style={styles.videoContainer}>
+            <TouchableOpacity style={styles.playButton}>
+              <Text>Play</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.activityLog}>
+            <Text style={styles.activityLogTitle}>Activity Log</Text>
+            <View style={styles.activityItem}>
+              <Text style={styles.activityText}>Watch video - Chapter 1</Text>
+              <Text style={styles.activityDate}>1st November, 2023</Text>
+            </View>
           </View>
         </View>
-      </View>
 
-      <View style={styles.middleSection}>
-        <View style={styles.infoBox}>
-          <Text style={styles.infoText}>EXAM DATES</Text>
+        <View style={styles.middleSection}>
+          <View style={styles.infoBox}>
+            <Text style={styles.infoText}>EXAM DATES</Text>
+          </View>
+          <View style={styles.infoBox}>
+            <Text style={styles.infoText}>PROGRESS</Text>
+          </View>
+          <View style={styles.infoBox}>
+            <Text style={styles.infoText}>SUGGESTIONS</Text>
+          </View>
         </View>
-        <View style={styles.infoBox}>
-          <Text style={styles.infoText}>PROGRESS</Text>
-        </View>
-        <View style={styles.infoBox}>
-          <Text style={styles.infoText}>SUGGESTIONS</Text>
-        </View>
-      </View>
 
-      <View style={styles.bottomSection}>
-        <View style={styles.actionBox}>
-          <TouchableOpacity style={styles.actionButton}>
-            <Text>Tips</Text>
-          </TouchableOpacity>
-          <Text style={styles.actionText}>Watch Videos</Text>
+        <View style={styles.bottomSection}>
+          <View style={styles.actionBox}>
+            <TouchableOpacity style={styles.actionButton}>
+              <Text>Tips</Text>
+            </TouchableOpacity>
+            <Text style={styles.actionText}>Watch Videos</Text>
+          </View>
+          <View style={styles.actionBox}>
+            <TouchableOpacity style={styles.actionButton}>
+              <Text>Notes</Text>
+            </TouchableOpacity>
+            <Text style={styles.actionText}>Take Notes</Text>
+          </View>
+          <View style={styles.actionBox}>
+            <TouchableOpacity style={styles.actionButton}>
+              <Text>Papers</Text>
+            </TouchableOpacity>
+            <Text style={styles.actionText}>Solve Papers</Text>
+          </View>
         </View>
-        <View style={styles.actionBox}>
-          <TouchableOpacity style={styles.actionButton}>
-            <Text>Notes</Text>
-          </TouchableOpacity>
-          <Text style={styles.actionText}>Take Notes</Text>
-        </View>
-        <View style={styles.actionBox}>
-          <TouchableOpacity style={styles.actionButton}>
-            <Text>Papers</Text>
-          </TouchableOpacity>
-          <Text style={styles.actionText}>Solve Papers</Text>
-        </View>
-      </View>
 
-      <TouchableOpacity style={styles.startJourneyButton}>
-        <Text style={styles.startJourneyText}>Start your journey</Text>
-      </TouchableOpacity>
-
-      <View style={styles.footer}>
-        <TouchableOpacity style={styles.footerButton}>
-          <Text style={styles.footerButtonText}>Join Community</Text>
+        <TouchableOpacity style={styles.startJourneyButton}>
+          <Text style={styles.startJourneyText}>Start your journey</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.footerButton}>
-          <Text style={styles.footerButtonText}>Submit Problems</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.footerText}>Missing something? Tell us</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+
+        <View style={styles.footer}>
+          <TouchableOpacity style={styles.footerButton}>
+            <Text style={styles.footerButtonText}>Join Community</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.footerButton}>
+            <Text style={styles.footerButtonText}>Submit Problems</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.footerText}>Missing something? Tell us</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
     backgroundColor: "#181818",
   },
   topSection: {

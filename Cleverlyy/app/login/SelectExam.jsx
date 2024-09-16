@@ -21,7 +21,7 @@ const SelectExam = () => {
 
   return (
     <View style={styles.try}>
-      <Header />
+      <Header link="./../settings/RootSettings" />
       <SafeAreaView style={styles.container}>
         <View
           style={{

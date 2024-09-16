@@ -5,9 +5,10 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Button,
 } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import SimpleSidebar from "../../components/SimpleSidebar";
+import Sidebar from "../../components/SimpleSidebar";
 import {
   PanGestureHandler,
   State,
@@ -32,12 +33,6 @@ const PlanCard = ({ title, price, description, specialOffer, tag }) => {
 };
 
 const PlanSelectionScreen = () => {
-  const [sidebarVisible, setSidebarVisible] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebarVisible(!sidebarVisible);
-  };
-
   const handleCardPress = (plan) => {
     console.log(`Plan selected: ${plan.title}`); // Implement your action here, like navigation or displaying details
   };
@@ -79,25 +74,18 @@ const PlanSelectionScreen = () => {
       tag: "",
     },
   ];
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarVisible(!isSidebarVisible);
+  };
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={styles.container}>
-        {!sidebarVisible && (
-          <TouchableOpacity onPress={toggleSidebar} style={styles.menuIcon}>
-            <Icon name="menu" size={30} color="#FFFFFF" />
-          </TouchableOpacity>
-        )}
-        {sidebarVisible && (
-          <PanGestureHandler
-            onGestureEvent={onSwipe}
-            onHandlerStateChange={onSwipe}
-          >
-            <View style={styles.sidebar}>
-              <SimpleSidebar />
-            </View>
-          </PanGestureHandler>
-        )}
+        {/* Sidebar Component, with toggleSidebar passed in */}
+        <Sidebar isVisible={isSidebarVisible} toggleSidebar={toggleSidebar} />
+
         <Text style={styles.title}>Select the Plan</Text>
         <ScrollView
           horizontal
@@ -105,30 +93,16 @@ const PlanSelectionScreen = () => {
           contentContainerStyle={styles.scrollViewContainer}
         >
           {plans.map((plan, index) => (
-            <TouchableOpacity
-              key={index}
-              onPress={() => handleCardPress(plan)}
-              style={styles.planCard}
-            >
-              {plan.tag && (
-                <View style={styles.tag}>
-                  <Text style={styles.tagText}>{plan.tag}</Text>
-                </View>
-              )}
+            <View key={index} style={styles.planCard}>
               <Text style={styles.planTitle}>{plan.title}</Text>
               <Text style={styles.price}>{plan.price}</Text>
               <Text style={styles.description}>{plan.description}</Text>
-              <Text style={styles.billcycle}>{plan.billcycle}</Text>
-              <Text style={styles.offertag}>{plan.offertag}</Text>
               {plan.specialOffer && (
                 <Text style={styles.specialOffer}>{plan.specialOffer}</Text>
               )}
-            </TouchableOpacity>
+            </View>
           ))}
         </ScrollView>
-        <Link href="/login/yearwiseResources" style={styles.navButton}>
-          <Text style={styles.navButtonText}>Go to Yearwise Resources</Text>
-        </Link>
       </View>
     </GestureHandlerRootView>
   );
