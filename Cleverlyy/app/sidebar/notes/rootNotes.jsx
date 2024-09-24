@@ -11,6 +11,7 @@ import {
   StyleSheet,
   Animated,
 } from "react-native";
+
 import Icon from "react-native-vector-icons/MaterialIcons";
 import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
