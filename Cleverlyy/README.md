@@ -1,4 +1,4 @@
-## DOCUMENTATION
+# DOCUMENTATION
 
 # Welcome to your Expo app 👋
 
@@ -6,47 +6,79 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
 ## Get started
 
-1. Install dependencies
+1. To get started , clone the github repo by :
 
    ```bash
-   npm install
+   git clone https://github.com/AymanIHakim/Cleverlyy.git
    ```
 
-2. Start the app
+2. Open the repo in you local machine and change the terminal directory to ./frontend
 
    ```bash
-    npx expo start
+    cd ./frontend
    ```
 
-In the output, you'll find options to open the app in a
+3. Open the repo in you local machine and change the terminal directory to ./frontend
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+    cd ./frontend
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+4. Run the following command to install all the required dependencies and packages:
 
-## Get a fresh project
+   ```bash
+    npm i
+   ```
 
-When you're ready, run:
+5. Start the project by:
 
-```bash
-npm run reset-project
-```
+   ```bash
+    npm run start
+   ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+6. Start the project by:
 
-## Learn more
+   ```bash
+    npm run start
+   ```
 
-To learn more about developing your project with Expo, look at the following resources:
+7. Cheers! Everything is set to go.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## FAQ
 
-## Join the community
+1. How to add a new file or directory to our project?
 
-Join our community of developers creating universal apps.
+   Step 1: Create a new file or directory.
+   step 2: Go to the app/\_layout.tsx and enlist your or directory if it is not already there.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+   tips: Now you can use Link tag in reactNative to navigate to your file or directory.
+
+2. How to integrate sidebar in your file ?
+
+   step 1: import sidebar Component in your file using relative path like this:
+
+   ```bash
+   import Sidebar from "./../../../components/SimpleSidebar";
+   ```
+
+   step 2: you need to pass state handler to the sidebar component as props like this:
+
+   ```bash
+
+   const yourPage = () => {
+   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+   const toggleSidebar = () => {
+      setIsSidebarVisible(!isSidebarVisible);
+      };
+   ...............................................................
+   ................................................................ //your code here...
+
+   return (
+         <Sidebar isVisible={isSidebarVisible} toggleSidebar={toggleSidebar} />
+         .......................................
+         ....................................... //your code here...
+   )
+   }
+   ```
+
+   tips : You need to leave some spaces for sidebar in your page. add marginLeft and test the most suitable formatting.
