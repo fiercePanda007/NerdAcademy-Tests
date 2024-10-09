@@ -1,4 +1,4 @@
-##DOCUMENTATION
+## DOCUMENTATION
 
 # Welcome to your Expo app 👋
 
