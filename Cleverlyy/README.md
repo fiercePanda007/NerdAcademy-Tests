@@ -1,91 +1,94 @@
-# DOCUMENTATION
+# Cleverlyy Expo App Documentation 👋
 
-# Welcome to your Expo app 👋
+Welcome to the Cleverlyy Expo app! This project is built using [Expo](https://expo.dev) and initialized with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app). Follow the steps below to set up and start the project on your local machine.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Getting Started
 
-## Get started
+### Step 1: Clone the Repository
 
-1. To get started , clone the github repo by :
+First, clone the repository from GitHub by running the following command in your terminal:
 
-   ```bash
-   git clone https://github.com/AymanIHakim/Cleverlyy.git
-   ```
+```bash
+git clone https://github.com/AymanIHakim/Cleverlyy.git
+```
 
-2. Open the repo in you local machine and change the initial directory of your TERMINAL/BASH to ./frontend by:
+### Step 2. After cloning the repository, open the project folder on your local machine and navigate to the frontend directory by running:
 
-   ```bash
-    cd ./frontend
-   ```
+```bash
+ cd ./frontend
+```
 
-3. Run the following command to install all the required dependencies and packages:
+### step 3. Now, install all the required dependencies and packages by running the following command:
 
-   ```bash
-    npm i
-   ```
+```bash
+ npm i
+```
 
-4. Start the project by:
+### step 4. Once the dependencies are installed, start the Expo project with the following command:
 
-   ```bash
-    npm run start
-   ```
+```bash
+ npm run start
+```
 
-5. Cheers! Everything is set to go.
+### step 5. Congrats! Your Expo app should now be up and running. 🎉
 
-## FAQ
+# FAQ
 
-1. How to add a new file or directory to our project?
+### 1. 1. How to Add a New File or Directory to the Project?
 
-   Step 1: Create a new file or directory.
+      Step 1: Create the File or Directory
+              Add your new file or directory to the project as needed.
 
-   step 2: Go to the app/\_layout.tsx and enlist your or directory if it is not already there.
+      Step 2: Register the File or Directory in the Layout
+              Next, add the path to your file or directory in app/_layout.tsx to ensure proper navigation. Use relative paths from the app directory.
+      Example:
 
-   ```bash
+```bash
    //@app/_layout.tsx
 
-    export default function RootLayout() {
-   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      .........................................
-      ......................................... //Already enlisted routes
-      <Stack.Screen name="PATH-To-Your-FILE-Or-DIRECTORY" /> // Use the same path in Link tag to naviagate between pages.
+   export default function RootLayout() {
+      return (
+         <Stack screenOptions={{ headerShown: false }}>
+               {/* Other existing routes */}
+               .........................................
+            <Stack.Screen name="PATH-To-Your-FILE-Or-DIRECTORY" /> {/* Use this path for navigation */}
+         </Stack>
 
-    </Stack>
-   );
-   }
-   ```
+         );
+      }
 
-   \*tips1:While enlisting your file or directory into our project please note that you SHOULD NOT use any relative path.
+```
 
-   \*tips2: Now you can use Link tag in reactNative to navigate to your file or directory.
+\*tips1:While enlisting your file or directory into our project please note that you SHOULD use paths relative to the [app] directory.
 
-2. How to integrate sidebar in your file ?
+\*tips2: Use the same path you registered here in a Link tag to navigate between pages.
 
-   step 1: import sidebar Component in your file using relative path like this:
+### 2. How to integrate Sidebar in your file ?
 
-   ```bash
-   import Sidebar from "./../../../components/SimpleSidebar";
-   ```
+      step 1: import sidebar Component in your file using relative path like this:
 
-   step 2: you need to pass state handler to the sidebar component as props like this:
+      ```bash
+      import Sidebar from "./../../../components/SimpleSidebar";  // Adjust the path relative to your current directory
+      ```
 
-   ```bash
+      step 2: You need to pass a state handler to the Sidebar component for visibility control. Here’s a sample implementation:
 
-   const yourPage = () => {
+      ```bash
 
-   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
-   const toggleSidebar = () => {
-      setIsSidebarVisible(!isSidebarVisible);
-      };
-   ...............................................................
-   ................................................................ //your code here...
+      const yourPage = () => {
 
-   return (
-         <Sidebar isVisible={isSidebarVisible} toggleSidebar={toggleSidebar} />
-         .......................................
-         ....................................... //your code here...
-   )
-   }
-   ```
+         const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+         const toggleSidebar = () => {
+            setIsSidebarVisible(!isSidebarVisible);
+         };
 
-   tips : You need to leave some spaces for sidebar in your page. add marginLeft and test the most suitable formatting.
+            {/* your code here... */}
+
+         return (
+            <Sidebar isVisible={isSidebarVisible} toggleSidebar={toggleSidebar} />
+                     {/* your code here... */}
+            )
+         }
+      ```
+
+      tips : You need to leave some spaces for sidebar in your page. add marginLeft and test the most suitable formatting.
