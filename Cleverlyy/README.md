@@ -12,7 +12,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    git clone https://github.com/AymanIHakim/Cleverlyy.git
    ```
 
-2. Open the repo in you local machine and change the terminal directory to ./frontend
+2. Open the repo in you local machine and change the initial directory of your TERMINAL/BASH to ./frontend by:
 
    ```bash
     cd ./frontend
@@ -40,7 +40,22 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 
    step 2: Go to the app/\_layout.tsx and enlist your or directory if it is not already there.
 
-   tips: Now you can use Link tag in reactNative to navigate to your file or directory.
+   ```bash
+    export default function RootLayout() {
+   return (
+    <Stack screenOptions={{ headerShown: false }}>
+      .........................................
+      ......................................... //Already enlisted routes
+      <Stack.Screen name="PATH-To-Your-FILE-Or-DIRECTORY" /> // Use the same path in Link tag to naviagate between pages.
+
+    </Stack>
+   );
+   }
+   ```
+
+   \*tips1:While enlisting your file or directory into our project please note that you SHOULD NOT use any relative path.
+
+   \*tips2: Now you can use Link tag in reactNative to navigate to your file or directory.
 
 2. How to integrate sidebar in your file ?
 
