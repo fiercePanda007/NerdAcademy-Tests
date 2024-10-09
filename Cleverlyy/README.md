@@ -49,6 +49,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 1. How to add a new file or directory to our project?
 
    Step 1: Create a new file or directory.
+
    step 2: Go to the app/\_layout.tsx and enlist your or directory if it is not already there.
 
    tips: Now you can use Link tag in reactNative to navigate to your file or directory.
@@ -66,6 +67,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    ```bash
 
    const yourPage = () => {
+
    const [isSidebarVisible, setIsSidebarVisible] = useState(false);
    const toggleSidebar = () => {
       setIsSidebarVisible(!isSidebarVisible);
