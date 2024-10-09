@@ -91,4 +91,4 @@ git clone https://github.com/AymanIHakim/Cleverlyy.git
          }
 
 
-      tips : You need to leave some spaces for sidebar in your page. add marginLeft and test the most suitable formatting.
+      tips : The sidebar component should be styled appropriately to fit within your page’s layout. You may need to adjust the marginLeft or other CSS properties to ensure the sidebar is correctly placed without overlapping your content
