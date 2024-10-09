@@ -67,13 +67,13 @@ git clone https://github.com/AymanIHakim/Cleverlyy.git
 
       step 1: import sidebar Component in your file using relative path like this:
 
-      ```bash
+
       import Sidebar from "./../../../components/SimpleSidebar";  // Adjust the path relative to your current directory
-      ```
+
 
       step 2: You need to pass a state handler to the Sidebar component for visibility control. Here’s a sample implementation:
 
-      ```bash
+
 
       const yourPage = () => {
 
@@ -89,6 +89,6 @@ git clone https://github.com/AymanIHakim/Cleverlyy.git
                      {/* your code here... */}
             )
          }
-      ```
+
 
       tips : You need to leave some spaces for sidebar in your page. add marginLeft and test the most suitable formatting.
