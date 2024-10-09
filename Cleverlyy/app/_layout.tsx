@@ -23,6 +23,7 @@ export default function RootLayout() {
       <Stack.Screen name="sidebar/progress/rootProgress" />
       <Stack.Screen name="sidebar/notes/rootNotes" />
       <Stack.Screen name="sidebar/aiCheck/rootAiCheck" />
+      <Stack.Screen name="sidebar/aiCheck/AiCheckResultView" />
       <Stack.Screen name="sidebar/calenders/rootCalenders" />
       <Stack.Screen name="sidebar/forum/rootForum" />
       <Stack.Screen name="sidebar/tipshints/rootTips" />

@@ -28,7 +28,12 @@ const DropdownModal = () => {
         <Text>{selectedValue}</Text>
       </TouchableOpacity>
 
-      <Modal isVisible={isModalVisible} onBackdropPress={toggleModal}>
+      <Modal
+        isVisible={isModalVisible}
+        transparent={true}
+        onBackdropPress={toggleModal}
+        supportedOrientations={["portrait", "landscape"]}
+      >
         <View style={styles.modalContent}>
           <FlatList
             data={data}

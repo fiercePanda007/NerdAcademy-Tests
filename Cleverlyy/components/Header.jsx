@@ -20,13 +20,12 @@ const Header = (settingsLink) => {
     sidebarHeight = 120;
     toppadding = 50;
   }
-  console.log(winHeight + " " + winWidth);
   return (
-    <View
+    <SafeAreaView
       style={{
         width: winWidth,
         height: sidebarHeight,
-        backgroundColor: "black",
+        backgroundColor: "#271f4d",
       }}
     >
       <View
@@ -34,14 +33,14 @@ const Header = (settingsLink) => {
           flex: 1,
           flexDirection: "row",
           justifyContent: "flex-end",
-          marginRight: 20,
+          marginRight: 70,
           paddingTop: toppadding,
         }}
       >
         <TouchableOpacity>
           <Link
             href={settingsLink.link}
-            style={{ flex: 1, flexDirection: "row" }}
+            style={{ flex: 1, flexDirection: "row", marginTop: 5 }}
           >
             <View>
               <Text>
@@ -55,7 +54,7 @@ const Header = (settingsLink) => {
           </Link>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
