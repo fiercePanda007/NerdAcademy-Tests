@@ -15,6 +15,8 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import AiSvg from "./../../../assets/svg/AiChecking";
 
 const AICheckingScreen = () => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
@@ -133,17 +135,17 @@ const AICheckingScreen = () => {
     }
   }
 
-  let arrowColor = year ? "black" : "rgba(0, 0, 0, 0.3)";
-
   return (
     <View style={styles.container}>
       <Header link="./../../settings/RootSettings" />
 
       <Sidebar isVisible={isSidebarVisible} toggleSidebar={toggleSidebar} />
 
-      <SafeAreaView>
+      <View style={{ marginLeft: 100 }}>
         <View style={{ paddingBottom: 30 }}>
-          <Text style={styles.heading}>AI Checking</Text>
+          <View style={{ paddingBottom: 10 }}>
+            <AiSvg></AiSvg>
+          </View>
           <View style={{ flexDirection: "row" }}>
             <AntDesign name="checkcircleo" size={40} color="#8878f9" />
             <Text style={styles.description}>
@@ -159,7 +161,7 @@ const AICheckingScreen = () => {
         </View>
 
         <ScrollView stickyHeaderHiddenOnScroll style={{ marginBottom: 200 }}>
-          <View style={{ paddingLeft: 10, paddingRight: 10 }}>
+          <View style={{ paddingLeft: 10, paddingRight: 20 }}>
             <View
               style={{
                 flex: 1,
@@ -275,7 +277,9 @@ const AICheckingScreen = () => {
                   <TouchableOpacity
                     style={[
                       styles.dropDownSelectYear,
-                      year && { borderColor: "black", borderWidth: 1 },
+                      year
+                        ? { borderColor: "#6522eb", borderWidth: 2 }
+                        : { borderColor: "black", borderWidth: 1 },
                     ]}
                     onPress={() => {
                       setDropdownsVisible({
@@ -294,16 +298,23 @@ const AICheckingScreen = () => {
                         Select Year
                       </Text>
                     )}
-
-                    <FontAwesome
-                      name={
-                        dropdownsVisible.year
-                          ? "arrow-circle-up"
-                          : "arrow-circle-down"
-                      }
-                      size={24}
-                      color={year ? "black" : "rgba(0, 0, 0, 0.3)"}
-                    />
+                    {year ? (
+                      <Ionicons
+                        name="checkmark-done"
+                        size={24}
+                        color="#6522eb"
+                      />
+                    ) : (
+                      <FontAwesome
+                        name={
+                          dropdownsVisible.year
+                            ? "arrow-circle-up"
+                            : "arrow-circle-down"
+                        }
+                        size={24}
+                        color={year ? "black" : "rgba(0, 0, 0, 0.3)"}
+                      />
+                    )}
                   </TouchableOpacity>
 
                   <View>
@@ -390,7 +401,9 @@ const AICheckingScreen = () => {
                   <TouchableOpacity
                     style={[
                       styles.dropDownSelectYear,
-                      year && { borderColor: "black", borderWidth: 1 },
+                      session
+                        ? { borderColor: "#6522eb", borderWidth: 2 }
+                        : { borderColor: "black", borderWidth: 1 },
                     ]}
                     onPress={() => {
                       setDropdownsVisible({
@@ -409,15 +422,23 @@ const AICheckingScreen = () => {
                         Select Session
                       </Text>
                     )}
-                    <FontAwesome
-                      name={
-                        dropdownsVisible.session
-                          ? "arrow-circle-up"
-                          : "arrow-circle-down"
-                      }
-                      size={24}
-                      color={session ? "black" : "rgba(0, 0, 0, 0.3)"}
-                    />
+                    {session ? (
+                      <Ionicons
+                        name="checkmark-done"
+                        size={24}
+                        color="#6522eb"
+                      />
+                    ) : (
+                      <FontAwesome
+                        name={
+                          dropdownsVisible.year
+                            ? "arrow-circle-up"
+                            : "arrow-circle-down"
+                        }
+                        size={24}
+                        color={session ? "black" : "rgba(0, 0, 0, 0.3)"}
+                      />
+                    )}
                   </TouchableOpacity>
 
                   <View>
@@ -498,7 +519,9 @@ const AICheckingScreen = () => {
                   <TouchableOpacity
                     style={[
                       styles.dropDownSelectYear,
-                      year && { borderColor: "black", borderWidth: 1 },
+                      variant
+                        ? { borderColor: "#6522eb", borderWidth: 2 }
+                        : { borderColor: "black", borderWidth: 1 },
                     ]}
                     onPress={() => {
                       setDropdownsVisible({
@@ -517,15 +540,23 @@ const AICheckingScreen = () => {
                         Select variant
                       </Text>
                     )}
-                    <FontAwesome
-                      name={
-                        dropdownsVisible.variant
-                          ? "arrow-circle-up"
-                          : "arrow-circle-down"
-                      }
-                      size={24}
-                      color={variant ? "black" : "rgba(0, 0, 0, 0.3)"}
-                    />
+                    {variant ? (
+                      <Ionicons
+                        name="checkmark-done"
+                        size={24}
+                        color="#6522eb"
+                      />
+                    ) : (
+                      <FontAwesome
+                        name={
+                          dropdownsVisible.year
+                            ? "arrow-circle-up"
+                            : "arrow-circle-down"
+                        }
+                        size={24}
+                        color={variant ? "black" : "rgba(0, 0, 0, 0.3)"}
+                      />
+                    )}
                   </TouchableOpacity>
 
                   <View>
@@ -606,7 +637,9 @@ const AICheckingScreen = () => {
                   <TouchableOpacity
                     style={[
                       styles.dropDownSelectYear,
-                      year && { borderColor: "black", borderWidth: 1 },
+                      paper
+                        ? { borderColor: "#6522eb", borderWidth: 2 }
+                        : { borderColor: "black", borderWidth: 1 },
                     ]}
                     onPress={() => {
                       setDropdownsVisible({
@@ -625,15 +658,23 @@ const AICheckingScreen = () => {
                         Select Paper
                       </Text>
                     )}
-                    <FontAwesome
-                      name={
-                        dropdownsVisible.paper
-                          ? "arrow-circle-up"
-                          : "arrow-circle-down"
-                      }
-                      size={24}
-                      color={paper ? "black" : "rgba(0, 0, 0, 0.3)"}
-                    />
+                    {paper ? (
+                      <Ionicons
+                        name="checkmark-done"
+                        size={24}
+                        color="#6522eb"
+                      />
+                    ) : (
+                      <FontAwesome
+                        name={
+                          dropdownsVisible.year
+                            ? "arrow-circle-up"
+                            : "arrow-circle-down"
+                        }
+                        size={24}
+                        color={paper ? "black" : "rgba(0, 0, 0, 0.3)"}
+                      />
+                    )}
                   </TouchableOpacity>
 
                   <View>
@@ -790,7 +831,7 @@ const AICheckingScreen = () => {
                   }}
                 ></View>
                 <View
-                  style={{ paddingLeft: 10, paddingRight: 10, marginTop: 10 }}
+                  style={{ paddingLeft: 10, paddingRight: 0, marginTop: 10 }}
                 >
                   <Text style={{ fontWeight: "700" }}>OR</Text>
                 </View>
@@ -848,7 +889,7 @@ const AICheckingScreen = () => {
             </View>
           )}
         </ScrollView>
-      </SafeAreaView>
+      </View>
     </View>
   );
 };

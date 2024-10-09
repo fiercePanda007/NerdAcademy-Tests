@@ -8,20 +8,39 @@ import {
 } from "react-native";
 import { WebView } from "react-native-webview"; // Import WebView to render PDFs
 import { SafeAreaView } from "react-native-safe-area-context";
-import AntDesign from "@expo/vector-icons/AntDesign";
-import Feather from "@expo/vector-icons/Feather";
 import Header from "./../../../components/Header";
 import Sidebar from "./../../../components/SimpleSidebar";
+import AiSvg from "./../../../assets/svg/AiChecking";
+import GradientBackground from "./../../../assets/svg/GradientBackground";
+import Entypo from "@expo/vector-icons/Entypo";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import Feather from "@expo/vector-icons/Feather";
 
 const PaperReviewPage = () => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  const primaryColor = "";
+  const primaryColorInverse = "";
+  const bgColor = "#f8f8f8";
+  const bgInverseColor = "black";
+  const initialBlack = "black";
+  const initialBlackInverse = "white";
+  let color = "";
+
+  darkMode ? (backgroundColor = bgColor) : (backgroundColor = bgInverseColor);
+  darkMode ? (color = initialBlack) : (color = initialBlackInverse);
+  const styles = getDynamicStyles(backgroundColor, color);
 
   const toggleSidebar = () => {
     setIsSidebarVisible(!isSidebarVisible);
   };
-  // Replace the URLs with actual PDF URLs
-  const solvedPaperUrl = "https://commons.wikimedia.org/wiki/Main_Page";
-  const aiResponseUrl = "https://commons.wikimedia.org/wiki/Category:Fossils";
+  // Replace the URLs with actual 'PDF URLs
+  const solvedPaperUrl = !darkMode
+    ? "https://x.com/?lang=en"
+    : "https://commons.wikimedia.org/wiki/Main_Page";
+  const aiResponseUrl = !darkMode
+    ? "https://x.com/?lang=en"
+    : "https://commons.wikimedia.org/wiki/Category:Fossils";
 
   return (
     <View style={styles.container}>
@@ -30,8 +49,8 @@ const PaperReviewPage = () => {
       <Sidebar isVisible={isSidebarVisible} toggleSidebar={toggleSidebar} />
       <View style={styles.subContainer}>
         <View style={styles.headerContainer}>
-          <View>
-            <Text style={styles.headerText}>AI Checking</Text>
+          <View style={{ padding: 0 }}>
+            <AiSvg></AiSvg>
           </View>
           <View style={styles.HorizontalLineView}></View>
         </View>
@@ -46,7 +65,7 @@ const PaperReviewPage = () => {
               </View>
               <View style={styles.actionButtonsContainer}>
                 <TouchableOpacity style={styles.button}>
-                  <Text style={styles.buttonText}>Save to Progress</Text>
+                  <Text style={styles.buttonText}>Save to progress</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.button}>
@@ -98,16 +117,30 @@ const PaperReviewPage = () => {
                 <View style={styles.aiResponseHeaderMarksContainer}>
                   <View style={styles.downloadButtonContainer}>
                     <TouchableOpacity>
-                      <Feather name="download" size={24} color="black" />
+                      <Feather
+                        name="download"
+                        size={24}
+                        color={darkMode ? initialBlack : initialBlackInverse}
+                      />
                     </TouchableOpacity>
                   </View>
                   <View style={styles.aiGivenMarks}>
                     <View style={styles.marksTextWrapper}>
-                      <Text>Marks</Text>
+                      <Text
+                        style={
+                          darkMode ? { color: "black" } : { color: "white" }
+                        }
+                      >
+                        Marks
+                      </Text>
                     </View>
                     <View>
                       <TouchableOpacity>
-                        <AntDesign name="edit" size={20} color="black" />
+                        <AntDesign
+                          name="edit"
+                          size={20}
+                          color={darkMode ? initialBlack : initialBlackInverse}
+                        />
                       </TouchableOpacity>
                     </View>
                   </View>
@@ -123,9 +156,15 @@ const PaperReviewPage = () => {
           <View style={styles.bottomMessageContainer}>
             <View></View>
             <View style={styles.CautionTextContainer}>
-              <AntDesign name="infocirlceo" size={20} color="black" />
+              <AntDesign
+                name="infocirlceo"
+                size={20}
+                color={darkMode ? initialBlack : initialBlackInverse}
+              />
               <View style={styles.CautionTextWrapper}>
-                <Text>Ai Checking may not be accurate</Text>
+                <Text style={styles.cautionText}>
+                  Ai Checking may not be accurate
+                </Text>
               </View>
             </View>
             <View>
@@ -136,134 +175,169 @@ const PaperReviewPage = () => {
           </View>
         </ScrollView>
       </View>
+      <View
+        style={{
+          position: "absolute",
+          bottom: 0,
+          right: 30,
+          padding: 5,
+        }}
+      >
+        <TouchableOpacity
+          onPress={() => {
+            setDarkMode(!darkMode);
+          }}
+        >
+          {darkMode ? (
+            <Entypo
+              name="light-down"
+              size={30}
+              color={darkMode ? initialBlack : initialBlackInverse}
+            />
+          ) : (
+            <Entypo
+              name="light-up"
+              size={30}
+              color={darkMode ? initialBlack : initialBlackInverse}
+            />
+          )}
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f8f8f8",
-    paddingLeft: 90,
-    paddingRight: 20,
-    paddingBottom: 150,
-  },
-  subContainer: {
-    paddingLeft: 20,
-  },
-  mainHeaderContainer: {
-    flexDirection: "row",
-  },
-  HeaderContainerLeftWrapper: { flex: 6, flexDirection: "column" },
-  HeaderContainerRightWrapper: { flex: 2 },
-  headerContainer: {
-    marginBottom: 10,
-    marginTop: 10,
-  },
-  headerTextContainer: { marginTop: 10, marginBottom: 10 },
+const getDynamicStyles = (backgroundColor, color) => {
+  return StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: backgroundColor,
+      paddingLeft: 90,
+      paddingRight: 20,
+    },
+    subContainer: {
+      paddingLeft: 20,
+      marginBottom: 200,
+    },
+    mainHeaderContainer: {
+      flexDirection: "row",
+    },
+    HeaderContainerLeftWrapper: { flex: 6, flexDirection: "column" },
+    HeaderContainerRightWrapper: { flex: 2 },
+    headerContainer: {
+      marginBottom: 10,
+      marginTop: 10,
+    },
+    headerTextContainer: { marginTop: 10, marginBottom: 10 },
 
-  headerText: {
-    fontSize: 30,
-    fontWeight: "bold",
-  },
-  HorizontalLineView: {
-    marginTop: 12,
-    borderBottomWidth: 1,
-  },
-  paperTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-  },
-  actionButtonsContainer: {
-    flexDirection: "row",
-    marginBottom: 16,
-  },
-  button: {
-    backgroundColor: "#8c7bff",
-    padding: 12,
-    borderRadius: 8,
-    marginRight: 10,
-  },
-  buttonVerticalPlacement: {
-    marginTop: 10,
-    paddingLeft: 10,
-  },
-  buttonText: {
-    color: "#fff",
-    fontWeight: "bold",
-  },
-  contentContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    flex: 1,
-    marginTop: 10,
-  },
-  column: {
-    flex: 1,
-    backgroundColor: "#fff",
-    borderRadius: 8,
-    padding: 10,
-    borderWidth: 2,
-    borderColor: "#8c7bff",
-  },
-  columnHeaderContainer: {
-    marginLeft: 3,
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  columnHeader: {
-    marginBottom: 20,
-    fontSize: 20,
-  },
-  columnHeaderButtonText: { color: "#8c7bff" },
-  pdfViewer: {
-    flex: 1,
-    height: 600, // Adjust the height based on your design requirements
-    backgroundColor: "#f0f0f0",
-  },
-  aiResponseHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  aiResponseHeaderMarksContainer: {
-    flexDirection: "row",
-  },
+    headerText: {
+      fontSize: 30,
+      fontWeight: "bold",
+    },
+    HorizontalLineView: {
+      marginTop: 12,
+      borderBottomWidth: 1,
+      borderColor: color,
+    },
+    paperTitle: {
+      fontSize: 18,
+      fontWeight: "bold",
+    },
+    actionButtonsContainer: {
+      flexDirection: "row",
+      marginBottom: 16,
+    },
+    button: {
+      backgroundColor: "#8c7bff",
+      padding: 12,
+      borderRadius: 8,
+      marginRight: 10,
+    },
+    buttonVerticalPlacement: {
+      marginTop: 10,
+      paddingLeft: 10,
+    },
+    buttonText: {
+      color: "#fff",
+      fontWeight: "bold",
+    },
+    contentContainer: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      flex: 1,
+      marginTop: 10,
+    },
+    column: {
+      flex: 1,
+      backgroundColor: backgroundColor,
+      borderRadius: 8,
+      padding: 10,
+      borderWidth: 2,
+      borderColor: "#8c7bff",
+    },
+    columnHeaderContainer: {
+      marginLeft: 3,
+      flexDirection: "row",
+      justifyContent: "space-between",
+    },
+    columnHeader: {
+      marginBottom: 20,
+      fontSize: 20,
+      color: color,
+    },
+    columnHeaderButtonText: { color: "#8c7bff" },
+    pdfViewer: {
+      flex: 1,
+      height: 400, // Adjust the height based on your design requirements
+      backgroundColor: backgroundColor,
+    },
+    aiResponseHeader: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
+    aiResponseHeaderMarksContainer: {
+      flexDirection: "row",
+    },
 
-  aiGivenMarks: {
-    flexDirection: "row",
-    backgroundColor: "#c1baf4",
-    borderRadius: 5,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingVertical: 5,
-  },
-  downloadButtonContainer: {
-    marginRight: 10,
-  },
+    aiGivenMarks: {
+      flexDirection: "row",
+      backgroundColor: "#c1baf4",
+      borderRadius: 5,
+      paddingLeft: 10,
+      paddingRight: 10,
+      paddingVertical: 5,
+    },
+    downloadButtonContainer: {
+      marginRight: 10,
+    },
 
-  marksTextWrapper: {
-    marginTop: 2,
-    marginRight: 10,
-  },
-  bottomMessageContainer: {
-    paddingTop: 10,
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  CautionTextContainer: {
-    flexDirection: "row",
-  },
-  CautionTextWrapper: {
-    paddingTop: 3,
-    paddingLeft: 3,
-  },
-  giveFeedBackButton: {},
-  giveFeedBackText: {
-    color: "#8c7bff",
-    fontSize: 18,
-    fontWeight: "800",
-  },
-});
+    marksTextWrapper: {
+      marginTop: 2,
+      marginRight: 10,
+    },
+    bottomMessageContainer: {
+      paddingTop: 10,
+      flexDirection: "row",
+      justifyContent: "space-between",
+    },
+    CautionTextContainer: {
+      flexDirection: "row",
+    },
+    CautionTextWrapper: {
+      paddingTop: 3,
+      paddingLeft: 3,
+    },
+    cautionText: {
+      color: color,
+    },
+    giveFeedBackButton: {},
+    giveFeedBackText: {
+      color: "#8c7bff",
+      fontSize: 18,
+      fontWeight: "800",
+    },
+  });
+};
 
 export default PaperReviewPage;

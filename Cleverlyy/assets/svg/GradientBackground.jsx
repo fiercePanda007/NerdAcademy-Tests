@@ -2,13 +2,9 @@ import React from "react";
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import Svg, { Defs, LinearGradient, Rect, Stop } from "react-native-svg";
 
-const GradientBackground = () => {
-  const text = "Hello There";
-  const height = 300;
-  const width = 300;
-  const paddingtop = width * 0.45;
+const GradientBackground = ({ text, height, width, textSize, paddingtop }) => {
   return (
-    <View style={{ borderWidth: 2, backgroundColor: "red" }}>
+    <View style={{ borderRadius: 30, overflow: "hidden" }}>
       <Svg height={height} width={width}>
         <Defs>
           <LinearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
@@ -16,21 +12,26 @@ const GradientBackground = () => {
             <Stop offset="1" stopColor="#6BCB77" stopOpacity="1" />
           </LinearGradient>
         </Defs>
-        <Rect x="0" y="0" width={width} height={height} fill="url(#grad)" />
+        {/* Applying rx and ry to give rounded corners */}
+        <Rect
+          x="5"
+          y="0"
+          width={width}
+          height={height}
+          fill="url(#grad)"
+          rx="1"
+          ry="1" // Set both rx and ry to control the border radius
+        />
         <View style={{ alignSelf: "center", paddingTop: paddingtop }}>
-          <Text style={styles.text}>{text}</Text>
+          <Text
+            style={{ fontSize: textSize, color: "#fff", fontWeight: "bold" }}
+          >
+            {text}
+          </Text>
         </View>
       </Svg>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 24,
-    color: "#fff",
-    fontWeight: "bold",
-  },
-});
 
 export default GradientBackground;
