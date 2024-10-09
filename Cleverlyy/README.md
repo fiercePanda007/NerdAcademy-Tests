@@ -18,31 +18,19 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
     cd ./frontend
    ```
 
-3. Open the repo in you local machine and change the terminal directory to ./frontend
-
-   ```bash
-    cd ./frontend
-   ```
-
-4. Run the following command to install all the required dependencies and packages:
+3. Run the following command to install all the required dependencies and packages:
 
    ```bash
     npm i
    ```
 
-5. Start the project by:
+4. Start the project by:
 
    ```bash
     npm run start
    ```
 
-6. Start the project by:
-
-   ```bash
-    npm run start
-   ```
-
-7. Cheers! Everything is set to go.
+5. Cheers! Everything is set to go.
 
 ## FAQ
 
