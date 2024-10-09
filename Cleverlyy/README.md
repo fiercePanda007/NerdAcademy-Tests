@@ -41,6 +41,8 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    step 2: Go to the app/\_layout.tsx and enlist your or directory if it is not already there.
 
    ```bash
+   //@app/_layout.tsx
+
     export default function RootLayout() {
    return (
     <Stack screenOptions={{ headerShown: false }}>
