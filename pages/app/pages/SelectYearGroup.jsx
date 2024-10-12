@@ -45,6 +45,7 @@ const SelectYearGroup = () => {
           placeholder="Search your year group here..."
           next="SelectExam"
           multiSelect={false}
+          modal={false}
         />
       </SafeAreaView>
     </View>

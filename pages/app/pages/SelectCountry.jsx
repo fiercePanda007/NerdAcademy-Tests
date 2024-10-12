@@ -42,6 +42,7 @@ const SelectCountry = () => {
         placeholder="Search your country here ..."
         next="SelectYearGroup"
         multiSelect={false}
+        modal={false}
       />
     </SafeAreaView>
   );

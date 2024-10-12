@@ -55,6 +55,7 @@ const SelectExam = () => {
           placeholder="Search your Exam here..."
           next="SelectSubject"
           multiSelect={true}
+          modal={false}
         />
       </SafeAreaView>
     </View>

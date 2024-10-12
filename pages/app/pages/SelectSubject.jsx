@@ -90,6 +90,7 @@ const SelectSubject = () => {
           placeholder="Search your Subject here..."
           next="PlanSelectionScreen"
           multiSelect={true}
+          modal={true}
         />
       </SafeAreaView>
     </View>
@@ -125,8 +126,8 @@ const styles = StyleSheet.create({
     elevation: 2,
     width: 150,
     position: "absolute",
-    top: 40, // Adjust as needed
-    zIndex: 1, // Ensure the dropdown is above other elements
+    top: 40, 
+    zIndex: 1, 
   },
   option: {
     padding: 10,

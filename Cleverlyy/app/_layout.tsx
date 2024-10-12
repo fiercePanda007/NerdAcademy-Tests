@@ -20,6 +20,7 @@ export default function RootLayout() {
       <Stack.Screen name="sidebar/resrc/subResrc/YearWise" />
       <Stack.Screen name="sidebar/resrc/subResrc/ChapterWise" />
       <Stack.Screen name="sidebar/resrc/subResrc/RevisionNotes" />
+      <Stack.Screen name="sidebar/resrc/subResrc/otherResources" />
       <Stack.Screen name="sidebar/progress/rootProgress" />
       <Stack.Screen name="sidebar/notes/rootNotes" />
       <Stack.Screen name="sidebar/aiCheck/rootAiCheck" />

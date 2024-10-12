@@ -80,7 +80,6 @@ const Sidebar = ({ isVisible, toggleSidebar }) => {
       submenu: false,
       path: "tipshints/rootTips",
     },
-    // Other non-submenu items...
   ];
 
   const submenuItems = [
@@ -101,6 +100,12 @@ const Sidebar = ({ isVisible, toggleSidebar }) => {
       label: "Revision Notes",
       icon: "notebook-outline",
       path: "resrc/subResrc/RevisionNotes",
+    },
+    {
+      id: "Other Resources",
+      label: "Other Resources",
+      icon: "notebook-outline",
+      path: "sidebar/resrc/subResrc/otherResources",
     },
   ];
 
@@ -143,61 +148,74 @@ const Sidebar = ({ isVisible, toggleSidebar }) => {
               if (item.label === "Resources") {
                 return (
                   <View key={item.id}>
-                    <TouchableOpacity
-                      onPress={() => {
-                        setIsResourcesOpen(!isResourcesOpen);
-                        setPressedItem(item.label);
-                      }} // Toggle the submenu
+                    <Link
+                      href={{
+                        pathname: `sidebar/${item.path}`,
+                      }}
+                      key={item.id}
+                      asChild
+                      // style={[styles.menuItem]}
                     >
-                      <View
-                        style={[
-                          styles.menuItem,
-                          styles.resourcesStyle,
-                          pressedItem === item.label && {
-                            backgroundColor: "white",
-                            borderRadius: 5,
-                            marginRight: 8,
-                            paddingVertical: 7,
-                          },
-                        ]}
+                      <TouchableOpacity
+                        onPress={() => {
+                          setIsResourcesOpen(!isResourcesOpen);
+                          setPressedItem(item.label);
+                        }} // Toggle the submenu
                       >
-                        {pressedItem === item.label ? (
-                          <Icon
-                            name={item.icon}
-                            size={24}
-                            color="black"
-                            style={styles.icon}
-                          />
-                        ) : (
-                          <Icon
-                            name={item.icon}
-                            size={24}
-                            color="white"
-                            style={styles.icon}
-                          />
-                        )}
-
-                        <Text
+                        <View
                           style={[
-                            styles.text,
-                            styles.resourcesText,
+                            styles.menuItem,
+                            styles.resourcesStyle,
                             pressedItem === item.label && {
-                              color: "black",
-                              fontWeight: "600",
+                              backgroundColor: "white",
+                              borderRadius: 5,
+                              marginRight: 8,
+                              paddingVertical: 7,
                             },
                           ]}
                         >
-                          {item.label}
-                        </Text>
+                          {pressedItem === item.label ? (
+                            <Icon
+                              name={item.icon}
+                              size={24}
+                              color="black"
+                              style={styles.icon}
+                            />
+                          ) : (
+                            <Icon
+                              name={item.icon}
+                              size={24}
+                              color="white"
+                              style={styles.icon}
+                            />
+                          )}
 
-                        <Icon
-                          name={isResourcesOpen ? "chevron-up" : "chevron-down"} // Arrow icon based on state
-                          size={24}
-                          color={pressedItem === item.label ? "black" : "white"}
-                          style={[styles.icon, styles.iconArrow]}
-                        />
-                      </View>
-                    </TouchableOpacity>
+                          <Text
+                            style={[
+                              styles.text,
+                              styles.resourcesText,
+                              pressedItem === item.label && {
+                                color: "black",
+                                fontWeight: "600",
+                              },
+                            ]}
+                          >
+                            {item.label}
+                          </Text>
+
+                          <Icon
+                            name={
+                              isResourcesOpen ? "chevron-up" : "chevron-down"
+                            } // Arrow icon based on state
+                            size={24}
+                            color={
+                              pressedItem === item.label ? "black" : "white"
+                            }
+                            style={[styles.icon, styles.iconArrow]}
+                          />
+                        </View>
+                      </TouchableOpacity>
+                    </Link>
 
                     {/* Submenu items for Resources */}
                     {isResourcesOpen && (

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import {
   View,
   TextInput,
@@ -6,15 +7,21 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  Button,
+  Modal,
 } from "react-native";
+
 import EvilIcons from "@expo/vector-icons/EvilIcons";
 import { Link } from "expo-router";
 import { Feather } from "@expo/vector-icons";
 
-const SearchComponent = ({ data, placeholder, next, multiSelect }) => {
+const boards = ["AQA", "CIE", "OCR", "Edexcel", "I am not sure"];
+
+const SearchComponent = ({ data, placeholder, next, multiSelect, modal }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredData, setFilteredData] = useState(data);
   const [selectedData, setSelectedData] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -31,11 +38,12 @@ const SearchComponent = ({ data, placeholder, next, multiSelect }) => {
   };
 
   const handleSelectCountry = (country) => {
+    if (modal && !selectedData.includes(country)) {
+      setIsModalVisible(!isModalVisible);
+    }
     if (multiSelect) {
       if (selectedData.includes(country)) {
-        setSelectedData(
-          selectedData.filter((item) => item !== country)
-        );
+        setSelectedData(selectedData.filter((item) => item !== country));
       } else {
         setSelectedData([...selectedData, country]);
       }
@@ -43,7 +51,7 @@ const SearchComponent = ({ data, placeholder, next, multiSelect }) => {
       setSelectedData([country]);
     }
   };
-
+  console.log(isModalVisible);
   return (
     <View style={styles.wrapper}>
       <ScrollView style={styles.container}>
@@ -63,8 +71,7 @@ const SearchComponent = ({ data, placeholder, next, multiSelect }) => {
               key={index}
               style={[
                 styles.itemContainer,
-                selectedData.includes(item) &&
-                  styles.selectedItemContainer,
+                selectedData.includes(item) && styles.selectedItemContainer,
               ]}
               onPress={() => handleSelectCountry(item)}
             >
@@ -74,16 +81,106 @@ const SearchComponent = ({ data, placeholder, next, multiSelect }) => {
               )}
             </TouchableOpacity>
           ))}
+
+          <Modal
+            visible={isModalVisible}
+            transparent={true}
+            supportedOrientations={["portrait", "landscape"]}
+            animationType="slide"
+            onRequestClose={() => {
+              setIsModalVisible(!isModalVisible);
+            }}
+          >
+            <View
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <View
+                style={{
+                  margin: 20,
+                  backgroundColor: "white",
+                  borderRadius: 20,
+                  padding: 35,
+                  alignItems: "center",
+                  shadowColor: "#000",
+                  shadowOffset: {
+                    width: 0,
+                    height: 2,
+                  },
+                  shadowOpacity: 0.25,
+                  shadowRadius: 4,
+                  elevation: 5,
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: 24,
+                  }}
+                >
+                  Choose your exam board for{" "}
+                  <Text
+                    style={{
+                      color: "#263eff",
+                    }}
+                  >
+                    {selectedData[selectedData.length - 1]}
+                  </Text>
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 20,
+                  }}
+                >
+                  You can always add later if you are not sure
+                </Text>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    gap: 10,
+                    flexWrap: "wrap",
+                    marginTop: 10,
+                  }}
+                >
+                  {boards.map((board, index) => (
+                    <TouchableOpacity
+                      key={index}
+                      style={{
+                        borderColor: "#263eff",
+                        borderRadius: 20,
+                        borderWidth: "2px",
+                      }}
+                      onPress={() => setIsModalVisible(!isModalVisible)}
+                    >
+                      <Text
+                        style={{
+                          fontSize: 20,
+                          padding: 10,
+                        }}
+                      >
+                        {board}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              </View>
+            </View>
+          </Modal>
         </View>
       </ScrollView>
       <View style={styles.buttonContainer}>
         {selectedData.length > 0 && (
           <TouchableOpacity style={styles.button}>
-            <Link href={{
-              pathname:`pages/${next}`,
-              params:selectedData,
-              // params:{selectedData:JSON.stringify(selectedData)},
-            }} style={styles.linkText}>
+            <Link
+              href={{
+                pathname: `pages/${next}`,
+                params: selectedData,
+              }}
+              style={styles.linkText}
+            >
               Continue
             </Link>
           </TouchableOpacity>
